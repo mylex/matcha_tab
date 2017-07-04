@@ -1,7 +1,6 @@
 var
     gulp = require("gulp"),
     concat = require("gulp-concat"),
-    gzip = require("gulp-gzip"),
     htmlmin = require("gulp-htmlmin"),
     uglify = require("gulp-uglify"),
     runSequence = require('run-sequence'),
@@ -33,7 +32,7 @@ gulp.task('js.minify', function() {
         .pipe(gulp.dest('dist'));
 });
 
-
+//CSS Minify
 gulp.task('uglyCSSFiles', function() {
     return gulp.src(styles)
         .pipe(concatCss("all.css"))
@@ -62,6 +61,5 @@ gulp.task('default', function() {
         'js.minify',
         'html.minify',
         'uglyCSSFiles'
-        //'css.minify'
     );
 });
