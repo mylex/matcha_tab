@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>New Tab</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- favicon -->
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <!-- css -->
+    <link rel="stylesheet" href="./css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div class="container-fluid body_back">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="most-visited-row recent_history" style="display:none;">
+                    <h5>Most Visted</h5>
+                    <div id="top_sites">
+                        <ul></ul>
+                    </div>
+                </div>
+                <div class="show_hostory_tab recent_history" style="display:none;">
+                    <h5>Recently Browsed</h5>
+                    <div id="typedUrl_div"></div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="date_time_section" style="display:none;">
+                    <div class="upperline" id="date-part"></div>
+                    <div class="bottomline" id="time-part"></div>
+                </div>
+                <div class="header_search_box">
+                    <form action="https://google.com/search" method="GET" target="_blank">
+                        <div class="checkbox">
+                            <label><input type="checkbox" id="search_engine_selector"> Search within MATCHA</label>
+                        </div>
+                        <div class="input-group">
+                            <input class="search_field" name="q" type="text" id="kensaku_box" class="form-control" placeholder="What do you want to Search?">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default search_field" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+            <div class="_stteings">
+                <button type="button" class="btn btn-default btn-xs pull-right" id="settings-button" data-toggle="modal" data-target="#myModal">
+              	<span class="glyphicon glyphicon-cog"></span>
+           	 	</button>
+            </div>
+
+            <div class="col-md-4 matcha_article_sec" style="display:none;">
+                <div class="widget-sidebar">
+                    <img src="img/logo.png" class="matcha_logo">
+                    <hr>
+                    <div class="content-widget-sidebar">
+                        <ul id="matcha_article">
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <footer>
+            <div class="flex-bottom">
+                <div class="width-mobile columns has-text-centered">
+                    <div class="column">
+                        <a href="https://facebook.com" data-toggle="tooltip" data-placement="top" title="Facebook">
+                            <i class="fa fa-facebook-official fa-3x fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://twitter.com">
+                            <i class="fa fa-twitter fa-3x fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://youtube.com">
+                            <i class="fa fa-youtube-play fa-3x fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://github.com">
+                            <i class="fa fa-github fa-3x fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://bitbucket.com">
+                            <i class="fa fa-bitbucket fa-3x fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://outlook.com">
+                            <i class="fa fa-envelope-o fa-3x fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://inbox.google.com">
+                            <i class="fa fa-envelope fa-3x fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://mangatail.com">
+                            <i class="fa fa-book fa-3x fa-fw" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Matcha Tab Settings</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Articles Settings</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="selectLanguage">Language</label>
+                                        <select id="selectLanguage" class="form-control">
+                                           <option value="jp">日本語</option><option value="en" selected="selected">English</option><option value="tw">中文繁體</option><option value="th">ภาษาไทย</option><option value="ko">한국어</option><option value="cn">中文简体</option><option value="id">Indonesian</option><option value="vn">Việt Nam</option><option value="easy">やさしい日本語</option>
+                                    </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="feedItemsCount">Articles Items</label>
+                                        <select id="feedItemsCount" class="form-control">
+																				<option value="5">5</option>
+																				<option value="6">6</option>
+																				<option value="7">7</option>
+																				<option value="8">8</option>
+																				<option value="9">9</option>
+																				<option value="10">10</option>
+																		</select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="checkbox">
+                                        <label><input id="enablePushNotification" type="checkbox"><b>Enable Push Notification</b></label>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Wallpaper Settings</h3>
+                        </div>
+                        <div class="panel-body">
+
+                            <div class="form-group">
+
+                                <label for="customImageInput">Custom Image</label>&nbsp;<span class="label label-warning">DEMO</span>
+                                <p class="help-block">You can upload a custom image. Be aware that a large image will slow down browsing so crop and compress your image before uploading.</p>
+                                <p class="help-block">You can set random multiple image by using <span class="label label-danger">BETA</span> version. We will release soon.</p>
+                                <div class="row">
+                                    <div class="col-sm-8 wallpaper_image_uploader">
+                                        <input accept="image/*" type="file" id="customImageInput" class="js-image-upload" />
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="checkbox">
+                                            <label><input id="defaultImage" type="checkbox"><b>Set Default</b></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p id="customImageErrorMessage" class="errorMessage"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Left Bar Settings</h3>
+                        </div>
+                        <div class="panel-body">
+
+                            <div class="col-sm-6">
+                                <div class="checkbox">
+                                    <label><input id="showMostVisited" type="checkbox"><b>Show Most Visited Sites</b></label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="checkbox">
+                                    <label><input id="showRecentHistory" type="checkbox"><b>Show Recent History</b></label>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Bookmark Bar (Bottom) Settings</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="col-sm-12">
+                                <p class="help-block">You can set your desired bookmark button link. Only <span class="label label-danger">BETA</span> user can use this feature.</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <span class="pull-left">Matcha Tab v<!-- app-version -->1.4.1<!-- app-version --> last updated <!-- app-date -->2017-07-04<!-- app-date --></span>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="saveAndClose">Save & Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="./js/moment.min.js"></script>
+<script src="js/jsoup_cl_mas.js"></script>
+<script src="js/settings.js"></script>
+<script src="js/get_rss_article.js"></script>
+<script src="js/history_data.js"></script>
+<script type="text/javascript" src="./js/image_upload.js"></script>
+<script type="text/javascript" src="./js/common.js"></script>
+<script src="js/analytics.js"></script>
+
+</html>

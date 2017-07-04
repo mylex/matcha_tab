@@ -1,0 +1,12 @@
+{
+    "name": "matcha_eye",
+    "version": "1.4.1",
+    "description": "Replace default new tab page in Chrome with a useful new tab page.",
+    "main": "gulpfile.js",
+    "scripts": {
+        "gulp": "gulp",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "MIT"
+}
