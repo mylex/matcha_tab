@@ -1,38 +1,41 @@
-var gulp = require('gulp');
-
-var concat = require('gulp-concat');
-var rename = require('gulp-rename');
-var uglify = require('gulp-uglify');
-var optimzeJs = require('gulp-optimize-js');
-var concatCss = require('gulp-concat-css');
-var cleanCSS = require('gulp-clean-css');
-var htmlmin = require('gulp-htmlmin');
-var watch = require('gulp-watch');
+var
+    gulp = require("gulp"),
+    concat = require("gulp-concat"),
+    gzip = require("gulp-gzip"),
+    htmlmin = require("gulp-htmlmin"),
+    uglify = require("gulp-uglify"),
+    runSequence = require('run-sequence'),
+    concatCss = require('gulp-concat-css'),
+    rename = require('gulp-rename'),
+    cleanCSS = require('gulp-clean-css');
 
 var scripts = [
-    './js/*'
+    'js/jquery.min.js',
+    'js/bootstrap.min.js',
+    'js/moment.min.js',
+    'js/jsoup_cl_mas.js',
+    'js/settings.js',
+    'js/get_rss_article.js',
+    'js/history_data.js',
+    'js/image_upload.js',
+    'js/common.js',
+    'js/analytics.js'
 ];
 
-var cssFiles = [
-    './css/*'
+var styles = [
+    'css/*'
 ];
-
-var htmlFiles = [
-    'index.html'
-];
-
-gulp.task('uglyScripts', function() {
+// JS Minify
+gulp.task('js.minify', function() {
     return gulp.src(scripts)
-        .pipe(concat('all.js'))
-        .pipe(gulp.dest('./dist/'))
-        .pipe(rename('all.min.js'))
+        .pipe(concat('index.min.js'))
         .pipe(uglify())
-        .pipe(optimzeJs())
-        .pipe(gulp.dest('./dist/'));
+        .pipe(gulp.dest('dist'));
 });
+
 
 gulp.task('uglyCSSFiles', function() {
-    return gulp.src(cssFiles)
+    return gulp.src(styles)
         .pipe(concatCss("all.css"))
         .pipe(gulp.dest('./dist/'))
         .pipe(rename('all.min.css'))
@@ -40,40 +43,25 @@ gulp.task('uglyCSSFiles', function() {
         .pipe(gulp.dest('./dist/'));
 });
 
-gulp.task('uglyHTML', function() {
-    return gulp.src(htmlFiles)
-        .pipe(htmlmin({ collapseWhitespace: true }))
-        .pipe(rename('index.min.html'))
-        .pipe(gulp.dest('./dist'));
+// HTML Minify
+gulp.task('html.minify', function() {
+    return gulp.src('index.html')
+        .pipe(htmlmin({
+            collapseWhitespace: true,
+            removeComments: true,
+            minifyCSS: true,
+            minifyJS: true,
+            removeAttributeQuotes: true
+        }))
+        .pipe(gulp.dest('dist'));
 });
 
-gulp.task('scripts', function() {
-    return gulp.src(scripts)
-        .pipe(concat('all.js'))
-        .pipe(gulp.dest('./dist/'))
-        .pipe(rename('all.min.js'))
-        .pipe(gulp.dest('./dist/'));
+// Default
+gulp.task('default', function() {
+    return runSequence(
+        'js.minify',
+        'html.minify',
+        'uglyCSSFiles'
+        //'css.minify'
+    );
 });
-
-gulp.task('cssFiles', function() {
-    return gulp.src(cssFiles)
-        .pipe(concatCss("all.css"))
-        .pipe(gulp.dest('./dist/'))
-        .pipe(rename('all.min.css'))
-        .pipe(cleanCSS({ compatibility: 'ie8' }))
-        .pipe(gulp.dest('./dist/'));
-});
-
-gulp.task('html', function() {
-    return gulp.src(htmlFiles)
-        .pipe(rename('index.min.html'))
-        .pipe(gulp.dest('./dist'));
-});
-
-gulp.task('watch', ['scripts', 'cssFiles', 'html'], function() {
-    gulp.watch(scripts.concat(cssFiles).concat(htmlFiles), ['dev'])
-});
-
-gulp.task('dev', ['html', 'cssFiles', 'scripts']);
-
-gulp.task('default', ['uglyScripts', 'uglyCSSFiles', 'uglyHTML']);
