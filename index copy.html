@@ -22,57 +22,93 @@
 </head>
 
 <body>
-		<div class="body_back"></div>
+    <div class="container-fluid body_back">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="most-visited-row recent_history" style="display:none;">
+                    <h5>Most Visted</h5>
+                    <div id="top_sites">
+                        <ul></ul>
+                    </div>
+                </div>
+                <div class="show_hostory_tab recent_history" style="display:none;">
+                    <h5>Recently Browsed</h5>
+                    <div id="typedUrl_div"></div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="date_time_section" style="display:none;">
+                    <div class="upperline" id="date-part"></div>
+                    <div class="bottomline" id="time-part"></div>
+                </div>
+                <div class="header_search_box">
+                    <form action="https://google.com/search" method="GET" target="_blank">
+                        <div class="checkbox">
+                            <label><input type="checkbox" id="search_engine_selector"> Search within MATCHA</label>
+                        </div>
+                        <div class="input-group">
+                            <input class="search_field" name="q" type="text" id="kensaku_box" class="form-control" placeholder="What do you want to Search?">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default search_field" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
 
-		<div class="top_right">
-			<div class="top_nav">
-				<h5 class="most_visited_button" style="display:none;">Most Visted</h5>
-				<h5 class="recently_browsed_button" style="display:none;">Recently Browsed</h5>
-			</div>
-			
-				<div class="most-visited-row recent_history" style="display:none;">
-						<div id="top_sites">
-								<ul></ul>
-						</div>
-				</div>
-				<div class="show_hostory_tab recent_history" style="display:none;">
-						<div id="typedUrl_div"></div>
-				</div>
-		</div>
+            </div>
 
+            <div class="_stteings">
+                <button type="button" class="btn btn-default btn-xs pull-right" id="settings-button" data-toggle="modal" data-target="#myModal">
+              	<span class="glyphicon glyphicon-cog"></span>
+           	 	</button>
+            </div>
 
-		<div class="_stteings">
-				<button type="button" class="btn btn-default btn-xs pull-right" id="settings-button" data-toggle="modal" data-target="#myModal">
-				<span class="glyphicon glyphicon-cog"></span>
-			</button>
-		</div>
+            <div class="col-md-4 matcha_article_sec" style="display:none;">
+                <div class="widget-sidebar">
+                    <img src="img/logo.png" class="matcha_logo">
+                    <hr>
+                    <div class="content-widget-sidebar">
+                        <ul id="matcha_article">
+                        </ul>
+                    </div>
+                </div>
 
-		<div class="matcha_article_sec" style="display:none;">
-			<div class="title_bar">LATEST FROM MATCHA</div>
-			<div class="content-widget-sidebar">
-				<ul id="matcha_article"></ul>
-			</div>
-		</div>
+            </div>
+        </div>
 
-		<div class="middle_section">
-				<div class="date_time_section" style="display:none;">
-						<div class="upperline" id="date-part"></div>
-						<div class="bottomline" id="time-part"></div>
-				</div>
-				<div class="header_search_box">
-						<form action="https://google.com/search" method="GET" target="_blank">
-								<div class="checkbox">
-										<label><input type="checkbox" id="search_engine_selector">INSIDE MATCHA</label>
-								</div>
-								<div class="input-group">
-										<input class="search_field" name="q" type="text" id="kensaku_box" class="form-control" placeholder="What do you want to Search?">
-										<div class="input-group-btn">
-												<button class="btn btn-default search_field" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-										</div>
-								</div>
-						</form>
-				</div>								
-		</div>
+        <footer>
+            <div class="flex-bottom">
+                <div class="width-mobile columns has-text-centered">
+                    <div class="column">
+                        <a href="https://facebook.com" data-toggle="tooltip" data-placement="top" title="Facebook">
+                            <i class="fa fa-facebook-official fa-3x fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://twitter.com">
+                            <i class="fa fa-twitter fa-3x fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://youtube.com">
+                            <i class="fa fa-youtube-play fa-3x fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://github.com">
+                            <i class="fa fa-github fa-3x fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://bitbucket.com">
+                            <i class="fa fa-bitbucket fa-3x fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://outlook.com">
+                            <i class="fa fa-envelope-o fa-3x fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://inbox.google.com">
+                            <i class="fa fa-envelope fa-3x fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://mangatail.com">
+                            <i class="fa fa-book fa-3x fa-fw" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
 
 
     <!-- Modal -->

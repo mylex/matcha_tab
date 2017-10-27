@@ -7,7 +7,7 @@ $.getFeed({
             var html = '<li class="recent-post">';
             html += '<a href="' + item.link + '"><div class="post-img">';
             html += '<img src="' + item.media + '" class="img-responsive"></div></a>';
-            html += '<a href="' + item.link + '"><h5>' + item.title + '</h5></a></li>';
+            html += '<a href="' + item.link + '"><p>' + item.title + '</p></a></li>';
             $("#matcha_article").append(html);
             save_to_local('matcha_article_' + i, item);
         }
@@ -19,7 +19,7 @@ $.getFeed({
                 var html = '<li class="recent-post">';
                 html += '<a href="' + item.link + '"><div class="post-img">';
                 html += '<img src="' + item.media + '" class="img-responsive"></div></a>';
-                html += '<a href="' + item.link + '"><h5>' + item.title + '</h5></a></li>';
+                html += '<a href="' + item.link + '"><p>' + item.title + '</p></a></li>';
                 $("#matcha_article").append(html);
             }
         }
@@ -30,7 +30,8 @@ clearLocalStorage();
 
 function clearLocalStorage() {
     var d = new Date();
-    var current_time_stamp = d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
+		var current_time_stamp = d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
+		console.log(current_time_stamp);
     //console.log(current_time_stamp);
     if (current_time_stamp === '00:00:00') {
         localStorage.clear();

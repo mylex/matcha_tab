@@ -1,16 +1,16 @@
 window.onload = function() {
     var interval = setInterval(function() {
-        var momentNow = moment();
-        document.getElementById('date-part').innerHTML = momentNow.format('dddd') + ' | ' + momentNow.format('ll');
+				var momentNow = moment();
+				var t_offset = new Date().getTimezoneOffset();
+				momentNow.parseZone(t_offset);
+        document.getElementById('date-part').innerHTML = '<span class="weekday">' + momentNow.format('dddd') + '</span><div class="date_board"><span class="day">' + momentNow.format('DD') + '</span><p class="month">'+momentNow.format('MMMM')+'</p><span class="year">'+momentNow.format('YYYY')+'</div>';
         // $('#date-part').html();
-        document.getElementById('time-part').innerHTML = momentNow.format('LTS');
+        document.getElementById('time-part').innerHTML = momentNow.format('HH:mm') + '<span>' + momentNow.format('A') + '</span>';
         // $('#time-part').html();
     }, 100);
 }
 
 $(document).ready(function() {
-    $('#kensaku_box').focus();
-
     $('#search_engine_selector').change(function() {
         if ($(this).prop('checked')) {
             $('.header_search_box form').attr('action', 'https://matcha-jp.com/' + settings.LANGUAGE + '/search/index');
@@ -27,26 +27,31 @@ $(document).ready(function() {
         $(".matcha_article_sec").show(200);
     }, 500);
     if (settings.SHOW_MOST_VISITED && settings.SHOW_HISTORY) {
-        setTimeout(function() {
-            $(".most-visited-row").show(300);
-        }, 700);
-        setTimeout(function() {
-            $(".show_hostory_tab").show(300);
-        }, 900);
+			$(".most_visited_button").show();
+			$(".recently_browsed_button").show();
     } else if (settings.SHOW_MOST_VISITED) {
-        setTimeout(function() {
-            $(".most-visited-row").show(300);
-        }, 700);
+      $(".most_visited_button").show();
     } else if (settings.SHOW_HISTORY) {
-        setTimeout(function() {
-            $(".show_hostory_tab").show(300);
-        }, 900);
-    } else {
-        setTimeout(function() {
-            $(".most-visited-row").show(300);
-        }, 700);
-    }
+      $(".recently_browsed_button").show();
+    } 
+		
+		$('.most_visited_button').on('click touchend', function(){
+			setTimeout(function() {
+				$(".show_hostory_tab").hide();
+				$('.most_visited_button').addClass("menu_style");
+				$('.recently_browsed_button').removeClass("menu_style");
+				$(".most-visited-row").toggle(300);
+			}, 100);
+		});
 
+		$('.recently_browsed_button').on('click touchend', function(){
+			setTimeout(function() {
+				$(".most-visited-row").hide();
+				$('.recently_browsed_button').addClass("menu_style");
+				$('.most_visited_button').removeClass("menu_style");
+				$(".show_hostory_tab").toggle(300);
+			}, 100);
+		});
 
     // For Wallpaper Image
     if (settings.WALPAPER_IMAGE !== '') {
@@ -85,3 +90,53 @@ function loadAndDisplayMostVisited() {
         $('#top_sites ul').append(html);
     });
 }
+
+
+/* 
+
+// For Getting Current Location Info
+if (navigator.geolocation) {
+    var optn = {
+        enableHighAccuracy: true,
+        timeout: 10 * 1000 * 1000,
+        maximumAge: 0
+    };
+    navigator.geolocation.getCurrentPosition(success, showError, optn);
+} else {
+    console.log('User denied for sharing location!');
+}
+
+function success(position) {
+    console.log(position.coords.latitude);
+    console.log(position.coords.longitude);
+
+    var GEOCODING = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + position.coords.latitude + '%2C' + position.coords.longitude + '&language=en';
+
+    $.getJSON(GEOCODING).done(function(location) {
+        console.log(location);
+    });
+
+}
+
+function showError(error) {
+    switch (error.code) {
+        case error.PERMISSION_DENIED:
+            alert("User denied the request for Geolocation.");
+            break;
+        case error.POSITION_UNAVAILABLE:
+            alert("Location information is unavailable.");
+            break;
+        case error.TIMEOUT:
+            alert("The request to get user location timed out.");
+            break;
+        case error.UNKNOWN_ERROR:
+            alert("An unknown error occurred.");
+            break;
+    }
+}
+
+function error(err) {
+    console.log(err);
+}
+
+*/
