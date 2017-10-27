@@ -11344,7 +11344,7 @@ html {
 
 .body_back {
   /* The image used */
-  background-image: url("https://source.unsplash.com/collection/963744");
+  background-image: url("https://source.unsplash.com/collection/1329013");
   /* Full height */
   height: 100%;
   /* Center and scale the image nicely */
@@ -11481,7 +11481,7 @@ input#kensaku_box:focus {
   display: inline-block;
   position: absolute;
   right: 0;
-  top: 30px;
+  top: 0;
 }
 
 .content-widget-sidebar {
@@ -11494,11 +11494,11 @@ input#kensaku_box:focus {
   font-size: 15px;
   color: #fff;
   background-color: rgba(0,0,0,.25);
-  padding: 15px;
+  padding: 10px 20px;
 }
 
 .recent-post {
-  width: 89%;
+  width: 100%;
   list-style-type: none;
   display: inline-block;
   margin-bottom: 5px;
@@ -11506,6 +11506,10 @@ input#kensaku_box:focus {
 
 #matcha_article {
   width: 350px;
+}
+
+.recent-post p {
+  font-size: 12px;
 }
 
 .post-img,
@@ -11692,7 +11696,7 @@ button#settings-button {
   .date_time_section {
     position: relative;
     top: 100px;
-    min-width: 0px;
+    min-width: 0px !important;
   }
 }
 

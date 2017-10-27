@@ -77,6 +77,6 @@ if (data !== null) {
         img.attr('width', '100px');
         $('.wallpaper_image_uploader').append(img);
     } else {
-        $('.body_back').css('background-image', 'url("https://source.unsplash.com/collection/963744")');
+        $('.body_back').css('background-image', 'url("https://source.unsplash.com/collection/1329013")');
     }
 }
