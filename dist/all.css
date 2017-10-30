@@ -11631,6 +11631,62 @@ button#settings-button {
   z-index: 9999;
 }
 
+button#todo_button {
+  position: fixed;
+  bottom: 1em;
+  left: 1em;
+  padding: 10px;
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  z-index: 9999;
+}
+
+/* For To do Section */
+
+.to_do_section {
+  width: 400px;
+  position: fixed;
+  top: 40%;
+  left: 40%;
+  transform: translate(-15%,-60%);
+  background-color: rgba(0,0,0,.050);
+  padding: 10px;
+  border: 1px solid rgba(51, 51, 51, 0.14);
+  height: 200px;
+  overflow: auto;
+}
+
+input#to_do_input {
+  background-color: rgba(0,0,0,.075);
+  border: none;
+  width: 100%;
+  color: #fff;
+  display: inline-block;
+  position: relative;
+  bottom: 0px;
+  padding: 10px;
+}
+
+.to_do_list {
+  color: #fff;
+  padding: 5px;
+  height: 75%;
+}
+
+li.todo_each input {
+  margin-right: 5px;
+}
+
+li.todo_each {
+  list-style: none;
+}
+
+.to_do_list ul {
+  margin-left: -10%;
+}
+
 @media screen and (max-width: 720px) {
   .top_nav {
     display: none;
