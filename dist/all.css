@@ -11425,7 +11425,7 @@ span.year {
   width: 100%;
   padding: 15px;
   border-color: #337ab7;
-  background-color: rgba(0,0,0,.075);
+  background-color: rgba(136,136,136,.09);
   border: 1px;
 }
 
@@ -11554,45 +11554,28 @@ input#kensaku_box:focus {
   color: #fff;
 }
 
-h5.matcha_widget {
-  padding-left: 10px;
-  color: #ffff00;
-}
-
-#typedUrl_div ul {
-  margin: 5px 10px;
-}
-
 #typedUrl_div li {
   padding: 5px 3px 5px 10px;
   border-bottom: 1px solid #8b0000;
   background-color: rgba(136, 136, 136, 0.09);
 }
 
-.widget-sidebar hr {
-  border: 0;
-  border-top: 1px solid #eee;
+#typedUrl_div ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 5px 10px;
 }
 
-.flex-bottom {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(54, 25, 25, 0.09);
-  margin: 0 -8px 0 -15px;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-}
-
-.width-mobile {
-  padding: 15px;
+#typedUrl_div li a {
+  word-wrap: break-word;
+  color: #fff;
 }
 
 .date_time_section {
   position: relative;
   top: 100px;
-  padding: 0px 41px;
+  width: 600px;
+  margin: 0 auto;
 }
 
 .header_search_box {
@@ -11606,24 +11589,9 @@ h5.matcha_widget {
   padding: 15px;
 }
 
-img.matcha_logo {
-  width: 200px;
-  margin-left: 20%;
-}
-
 .search_field {
   height: 50px;
   border-radius: initial;
-}
-
-#typedUrl_div ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-#typedUrl_div li a {
-  word-wrap: break-word;
-  color: #fff;
 }
 
 .recent_history {
@@ -11634,11 +11602,6 @@ img.matcha_logo {
   border-radius: 15px;
   position: relative;
   z-index: 100;
-}
-
-.flex-bottom a {
-  font-size: 20px;
-  padding: 30px 0;
 }
 
 .most-visited-row ul {
@@ -11697,6 +11660,8 @@ button#settings-button {
     position: relative;
     top: 100px;
     min-width: 0px !important;
+    margin: auto;
+    width: auto;
   }
 }
 
