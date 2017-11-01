@@ -90,3 +90,31 @@ function loadAndDisplayMostVisited() {
         $('#top_sites ul').append(html);
     });
 }
+
+// For To do List
+//onkeydown="_todoinput(this)"
+$('.todo_input_field').on('keydown', function(e) {
+	if(event.keyCode == 13) {
+		var todo_name = $('.todo_input_field').val();
+		var to_do_counter = 0;
+		if($('ul.to_do_list_ul li').size() > 0){
+			to_do_counter = $('ul.to_do_list_ul li').length + 1;
+		}else{
+			to_do_counter = 1;
+		}
+		var html = '<li class="todo_each"><input type="checkbox" name="todo_'+to_do_counter+'" id="todo_chk">';
+		html += '<label class="todo_'+to_do_counter+'" for="todo_chk">'+todo_name+'</label></li>';
+		$(".to_do_list_ul").append(html);
+		$('.todo_input_field').val('');
+	}
+});
+
+$('#todo_button').on('click', function(){
+	$('#to_do_input').focus();
+});
+
+function save_todo_list(todo_init_text) {
+	
+
+	save_to_local('matcha_article_' + i, item);
+}

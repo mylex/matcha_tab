@@ -298,8 +298,7 @@ button#todo_button{
 	background-color: rgba(0,0,0,.050);
 	padding: 10px;
 	border: 1px solid rgba(51, 51, 51, 0.14);
-	height: 200px;
-	overflow: auto;
+	max-height: 200px;
 }
 input#to_do_input {
 	background-color: rgba(0,0,0,.075);
@@ -314,8 +313,27 @@ input#to_do_input {
 .to_do_list {
 	color: #fff;
 	padding: 5px;
-	height: 75%;
+	max-height: 130px;
+	overflow: scroll;
+	overflow-x: hidden;
 }
+
+.to_do_list::-webkit-scrollbar {
+	width: 4px;
+}
+.to_do_list::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+	border-radius: 10px;
+}
+.to_do_list::-webkit-scrollbar-corner {
+	background-color: transparent;
+}
+
+.to_do_list::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+
 li.todo_each input {
 	margin-right: 5px;
 }
@@ -326,6 +344,19 @@ li.todo_each {
 	margin-left: -10%;
 }
 
+input#todo_chk[type=checkbox]:checked + label {
+  color:rgba(255, 0, 0, 0.24);
+  text-decoration: line-through;
+} 
+#search_field_btn:hover {
+	padding: 0 30px;
+	text-align: center;
+	display: inline-block;
+	position: relative;
+	background-color: #337ab7;
+	border-color: #337ab7;
+	color: #fff;
+}
 @media screen and (max-width: 720px) {
 	.top_nav{
 		display: none;
